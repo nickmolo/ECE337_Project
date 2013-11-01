@@ -8,10 +8,10 @@ module hs_sr
 	output wire serial_out
 	);
 
-	reg [7:0] buffer
+	reg [9:0] buffer;
 
 	always @ (posedge clk, negedge n_rst) begin
-		if ( n_rst == 1'b1 ) begin
+		if ( n_rst == 1'b0 ) begin
 			buffer[9:0] <= {10{1'b0}}; 					//reset all registers to zero
 		end else begin
 
@@ -26,5 +26,5 @@ module hs_sr
 		end
 	end
 
-	assign serial_out = buffer[9];
+	assign serial_out = (buffer[0] & shift_enable);
 endmodule

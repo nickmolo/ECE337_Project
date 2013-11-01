@@ -1,0 +1,23 @@
+
+
+HDMI Encoder:
+Counter = 30 gates
+reg_in = 8 FF
+reg_mid = 9 FF
+reg_out = 10 FF
+stage1  = 16 gates
+comparator_s2 = 15 gates
+stage2 = 16 gates
+final adding = 24 gates
+
+Controller: 15 FF, 10 gates
+reg_in = 1 FF
+State   = 2 FF
+NextState = 2 FF
+output SR = 2 FF
+timer_en = 2 FF
+mux 	= 2 FF
+data buf = 2 FF
+sram crtl = 2 FF
+nextstate = 10 gates
+
