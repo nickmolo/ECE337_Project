@@ -11,10 +11,10 @@ module flex_counter
       input wire clk,
       input wire n_rst,
       input wire s_rst,
-	  input wire count_enable,
-	  input wire [NUM_CNT_BITS-1:0] rollover_val,
-	  output reg [NUM_CNT_BITS-1:0] count_out,
-	  output wire rollover_flag
+	  		input wire count_enable,
+	  		input wire [NUM_CNT_BITS-1:0] rollover_val,
+	  		output reg [NUM_CNT_BITS-1:0] count_out,
+	  		output wire rollover_flag
       );
 	  
 	  reg [NUM_CNT_BITS-1:0] counter;
@@ -24,7 +24,7 @@ module flex_counter
 	  assign count_out = counter;
 
 	  always @ (posedge clk, negedge n_rst) begin 
-	   if (n_rst==0) begin
+	   if (n_rst ==0) begin
 	     counter[NUM_CNT_BITS-1:0] <= {NUM_CNT_BITS{1'b0}}; //reset flip-flops to initial values
 	     rollval <= rollover_val;
 	   end else if (s_rst ==0) begin

@@ -2,7 +2,6 @@ module hs_sr
 	(
 	input wire clk,
 	input wire n_rst,
-	input wire shift_enable,
 	input wire load_enable,
 	input wire [9:0] parallel_in,
 	output wire serial_out
@@ -17,14 +16,12 @@ module hs_sr
 
 			if ( load_enable == 1'b1 ) begin
 				buffer[9:0] <= parallel_in;
-			end
-
-			if( shift_enable == 1'b1 ) begin
+			end else begin
 				buffer[9:0] <= {1'b0, buffer[9:1]}; 	//LSB currently
 			end
 
 		end
 	end
 
-	assign serial_out = (buffer[0] & shift_enable);
+	assign serial_out = (buffer[0] & !load_enable);
 endmodule

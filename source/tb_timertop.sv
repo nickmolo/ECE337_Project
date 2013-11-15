@@ -10,9 +10,12 @@ module tb_timertop();
   reg tb_n_rst;
 	reg tb_s_rst;
 	reg tb_enable;
-	reg tb_flag;
+	reg tb_flag_row;
+	reg tb_flag_col;
 	reg tb_pixel_clk;
-	reg [9:0] tb_countout;
+	reg [9:0] tb_counter_out_row;
+	reg [9:0] tb_counter_out_col;
+	
 
 	timertop DUT
 	(
@@ -20,9 +23,11 @@ module tb_timertop();
 		.n_rst(tb_n_rst),
 		.s_rst(tb_s_rst),
 		.enable(tb_enable),
-		.flag(tb_flag),
-		.countout(tb_countout),
-		.pixel_clk(tb_pixel_clk)
+		.flag_row(tb_flag_row),
+		.flag_col(tb_flag_col),
+		.pixel_clk(tb_pixel_clk),
+		.counter_out_row(tb_counter_out_row),
+		.counter_out_col(tb_counter_out_col)
 	);
 	
 	always

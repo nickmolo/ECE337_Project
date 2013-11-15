@@ -1,22 +1,47 @@
 module timertop
-	(
-	input wire clk,
-	input wire n_rst,
-	input wire s_rst,
-	input wire enable,
-	output reg flag,
-	output reg pixel_clk,
-	output reg [9:0] countout
-	);
-	   
-	
-	clockdivider DIVIDE
-	(
-		.clk(tb_clk),
+		(
+			input clk,
+			input n_rst,
+			input s_rst,
+			input enable,
+			
+			output flag_row,
+			output flag_col,
+			output pixel_clk,
+			output [9:0] counter_out_col,
+			output [9:0] counter_out_row
+		);
+		
+		clockdivider DIVIDE2
+			(
+				.clk(clk),
+				.n_rst(n_rst),
+				.s_rst(s_rst),
+				.enable(enable),
+				.flag(pixel_clk)
+			);
+			
+			
+		rowcounter ROW
+		(
+		.clk(clk),
 		.n_rst(n_rst),
 		.s_rst(s_rst),
 		.enable(enable),
-		.flag(pixel_clk)
-	);
-
+		.pixel_clk(pixel_clk),
+		.countout(counter_out_row),
+		.flag(flag_row)
+		);
+		
+		colcounter COL
+		(
+		.clk(clk),
+		.n_rst(n_rst),
+		.s_rst(s_rst),
+		.enable(enable),
+		.pixel_clk(pixel_clk),
+		.countout(counter_out_col),
+		.flag(flag_col)
+		);
+			
 endmodule
