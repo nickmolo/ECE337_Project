@@ -1,4 +1,4 @@
-module rowcounter
+module addresscounter
 	(
 	input wire clk,
 	input wire n_rst,

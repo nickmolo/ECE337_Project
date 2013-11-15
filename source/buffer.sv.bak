@@ -6,7 +6,7 @@ module buffer
 	input wire n_rst,
 	input wire load_enable,
 	input wire [NUMBITS-1:0] p_in,
-	output wire [NUMBITS-1:0] p_out
+	output wire [NUMBITS-1) p_out
 	);
 
 	reg [NUMBITS-1:0] buffer;

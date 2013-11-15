@@ -1,0 +1,50 @@
+`timescale 1ns / 10ps
+
+module tb_timertop();
+  
+  // Define parameters
+	parameter CLK_PERIOD				= 6.66;
+
+  
+  reg tb_clk;
+  reg tb_n_rst;
+	reg tb_s_rst;
+	reg tb_enable;
+	reg tb_flag;
+	reg [9:0] tb_countout;
+
+	timertop DUT
+	(
+		.clk(tb_clk),
+		.n_rst(tb_n_rst),
+		.s_rst(tb_s_rst),
+		.enable(tb_enable),
+		.flag(tb_flag),
+		.countout(tb_countout)
+	);
+	
+	always
+	begin : CLK_GEN
+		tb_clk = 1'b0;
+		#(CLK_PERIOD / 2);
+		tb_clk = 1'b1;
+		#(CLK_PERIOD / 2);
+	end
+	
+	initial
+	begin 
+		tb_n_rst = 0;
+	  tb_s_rst = 1;
+	  tb_enable = 0;
+	  #1;
+	  tb_n_rst = 1;
+	  tb_s_rst = 1;
+	  tb_enable = 0;
+	  #10;
+	  tb_enable= 1;
+	  
+	  
+    
+	end 
+	
+endmodule
