@@ -6,6 +6,6 @@ module sr_mux
 	output wire muxout
 	);
 
-	assign muxout = (select) : sr0 ? sr1;
+	assign output = (select) : sr0 ? sr1;
 	
 endmodule
