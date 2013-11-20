@@ -19,7 +19,7 @@ module flex_counter
 	  
 	  reg [NUM_CNT_BITS-1:0] counter;
 	  reg [NUM_CNT_BITS-1:0] rollval;
-
+	  
 	  assign rollover_flag = (counter >= rollover_val) ? 1'b1 : 1'b0;
 	  assign count_out = counter;
 
