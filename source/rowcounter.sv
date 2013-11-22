@@ -8,13 +8,15 @@ module rowcounter
 	output reg flag
 	);
 	  
-	flex_counter #(10) row(
+	edge_counter #(10) row(
 		.clk(clk),
 		.n_rst(n_rst),
-		.count_enable(pixel_clk && enable),
+		.count_enable(enable),
+		.in_edge(pixel_clk),
 		.rollover_val(10'b1000001101),
 		.count_out(countout),
 		.rollover_flag(flag)
 	);
+
 
 endmodule

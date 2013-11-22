@@ -8,10 +8,11 @@ module colcounter
 	output reg flag
 	);
 	  
-	flex_counter #(10) COL(
+	edge_counter #(10) COL(
 		.clk(clk),
 		.n_rst(n_rst),
-		.count_enable(pixel_clk && enable),
+		.count_enable(enable),
+		.in_edge(pixel_clk),
 		.rollover_val(10'b1100100000),
 		.count_out(countout),
 		.rollover_flag(flag)

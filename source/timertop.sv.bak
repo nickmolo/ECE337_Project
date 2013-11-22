@@ -3,7 +3,6 @@ module timertop
 			input clk,
 			input n_rst,
 			input enable,
-			
 			output reg flag_row,
 			output reg flag_col,
 			output flag_addr,
@@ -20,63 +19,39 @@ module timertop
 				.enable(enable),
 				.flag(pixel_clk)
 			);
+		
+		edge_counter #(10) COL
+			(
+				.clk(clk),
+				.n_rst(n_rst),
+				.count_enable(enable),
+				.in_edge(pixel_clk),
+				.rollover_val(10'b1100011111),
+				.count_out(counter_out_col),
+				.rollover_flag(flag_col)
+			);
 			
-		reg [9:0] X,
-		reg [9:0] Y,
-	
-		assign counter_out_col = X;
-		assign counter_out_row = Y;
-	
+		edge_counter #(10) ROW
+			(
+				.clk(clk),
+				.n_rst(n_rst),
+				.count_enable(enable),
+				.in_edge(flag_col),
+				.rollover_val(10'b1000001101),
+				.count_out(counter_out_row),
+				.rollover_flag(flag_row)
+			);
 		
-		
-		always @(posedge pixel_clk) begin
-			if (X==799) begin
-				X <= 0;
-			end else begin
-				X <= X+1;
-			end
-		end
-		
-		
-		always @(posedge pixel_clk) begin
-			if(X == 799) begin
-				if(Y == 524) begin
-					Y <= 0;
-				end else begin
-					Y <= Y + 1;
-				end
-			end
-		end
-		
-			
-/*		rowcounter ROW
-		(
-		.clk(clk),
-		.n_rst(n_rst),
-		.enable(enable),
-		.pixel_clk(flag_col),
-		.countout(counter_out_row),
-		.flag(flag_row)
-		);
-		
-		colcounter COL
-		(
-		.clk(clk),
-		.n_rst(n_rst),
-		.enable(enable),
-		.pixel_clk(pixel_clk),
-		.countout(counter_out_col),
-		.flag(flag_col)
-		);
-*/		
 		addresscounter ADDR
-		(
-			.clk(clk),
-			.n_rst(n_rst),
-			.enable(enable),
-			.pixel_clk(pixel_clk),
-			.countout(counter_out_addr),
-			.flag(flag_addr)
-		);
+			(
+				.clk(clk),
+				.n_rst(n_rst),
+				.enable(enable),
+				.pixel_clk(pixel_clk),
+				.colcnt(counter_out_col),
+				.rowcnt(counter_out_row),
+				.countout(counter_out_addr),
+				.flag(flag_addr)
+			);
 			
 endmodule

@@ -5,20 +5,6 @@ module clockdivider
 	input wire enable,
 	output reg flag
 	);
-
-/*	  
-	reg [2:0] tmp;
-	  
-	flex_counter #(3) divide(
-		.clk(clk),
-		.n_rst(n_rst),
-		.count_enable(enable),
-		.rollover_val(3'b110),
-		.count_out(tmp),
-		.rollover_flag(flag)
-	);
-*/
-
 	
 	reg [2:0] cnt;
 	reg clk_out;
