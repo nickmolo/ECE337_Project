@@ -28,7 +28,7 @@ end
 		.n_rst(n_rst),
 		.count_enable(enable2),
 		.in_edge(pixel_clk),
-		.rollover_val(307199),
+		.rollover_val(20'h4afff),
 		.count_out(countout),
 		.rollover_flag(flag)
 	);

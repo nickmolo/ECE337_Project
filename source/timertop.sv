@@ -26,7 +26,7 @@ module timertop
 				.n_rst(n_rst),
 				.count_enable(enable),
 				.in_edge(pixel_clk),
-				.rollover_val(799),
+				.rollover_val(10'h31f),
 				.count_out(counter_out_col),
 				.rollover_flag(flag_col)
 			);
@@ -37,7 +37,7 @@ module timertop
 				.n_rst(n_rst),
 				.count_enable(enable),
 				.in_edge(flag_col),
-				.rollover_val(524),
+				.rollover_val(10'h20c),
 				.count_out(counter_out_row),
 				.rollover_flag(flag_row)
 			);
