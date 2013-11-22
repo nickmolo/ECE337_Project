@@ -3,11 +3,12 @@ module clockdivider
 	input wire clk,
 	input wire n_rst,
 	input wire enable,
-	output reg flag
+	output reg flag_pixel,
+	output reg flag_pulse
 	);
 	
 	reg [2:0] cnt;
-	reg clk_out;
+	reg [2:0] cnt2;
 
 	
 	
@@ -18,14 +19,23 @@ module clockdivider
 			clk_out <= 0;
 		end else begin
 			
-			flag <= clk_out;
-							
-			if (cnt == 3) begin
-				cnt <= 0;
-				clk_out <= ~clk_out;
-			end else begin
-				cnt <= cnt +1;
-			end
+			if(enable == 1) begin
+				
+				if (cnt == 3) begin
+					cnt <= 0;
+					flag_pixel <= ~flag_pixel;
+				end else begin
+					cnt <= cnt +1;
+				end
+				
+				if (cnt2 == 6) begin
+					cnt2 <= 0;
+					flag_pulse <= 1;
+				end else begin
+					flag_pulse <= 0;
+					cnt2 <= cnt2 +1;
+				end
+						
 		end
 	end
 
