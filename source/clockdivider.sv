@@ -30,7 +30,7 @@ module clockdivider
 					cnt <= cnt +1;
 				end
 				
-				if (cnt2 == 6) begin
+				if (cnt2 >= 6) begin
 					cnt2 <= 0;
 					flag_pulse <= 1;
 				end else begin
