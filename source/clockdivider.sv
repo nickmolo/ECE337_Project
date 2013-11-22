@@ -16,7 +16,9 @@ module clockdivider
 		if( n_rst == 1'b0) begin
 			//reset everything
 			cnt <= 0;
-			clk_out <= 0;
+			cnt2 <= 0;
+			flag_pixel <= 0;
+			flag_pulse <=0;
 		end else begin
 			
 			if(enable == 1) begin
@@ -37,8 +39,9 @@ module clockdivider
 				end
 						
 		end
+		
 	end
-
+end
 
 
 endmodule
