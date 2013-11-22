@@ -8,7 +8,6 @@ module tb_timertop();
   
   reg tb_clk;
   reg tb_n_rst;
-	reg tb_s_rst;
 	reg tb_enable;
 	reg tb_flag_row;
 	reg tb_flag_col;
@@ -23,7 +22,6 @@ module tb_timertop();
 	(
 		.clk(tb_clk),
 		.n_rst(tb_n_rst),
-		.s_rst(tb_s_rst),
 		.enable(tb_enable),
 		.flag_row(tb_flag_row),
 		.flag_col(tb_flag_col),
@@ -45,11 +43,9 @@ module tb_timertop();
 	initial
 	begin 
 		tb_n_rst = 0;
-	  tb_s_rst = 1;
-	  tb_enable = 0;
+		tb_enable = 0;
 	  #1;
 	  tb_n_rst = 1;
-	  tb_s_rst = 1;
 	  tb_enable = 0;
 	  #10;
 	  tb_enable= 1;

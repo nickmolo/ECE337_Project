@@ -5,7 +5,6 @@ module colcounter
 	input wire s_rst,
 	input wire enable,
 	input wire pixel_clk,
-	input reg [9:0] val,
 	output reg [9:0] countout,
 	output reg flag
 	);
@@ -15,7 +14,7 @@ module colcounter
 		.n_rst(n_rst),
 		.s_rst(s_rst),
 		.count_enable(pixel_clk && enable),
-		.rollover_val(val),
+		.rollover_val(10'b1100100000),
 		.count_out(countout),
 		.rollover_flag(flag)
 	);

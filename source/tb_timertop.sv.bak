@@ -16,7 +16,7 @@ module tb_timertop();
 	reg tb_pixel_clk;
 	reg [9:0] tb_counter_out_row;
 	reg [9:0] tb_counter_out_col;
-	reg [9:0] tb_counter_out_addr;
+	reg [19:0] tb_counter_out_addr;
 	
 
 	timertop DUT

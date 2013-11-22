@@ -9,7 +9,7 @@ module clockdivider
 	  
 	reg [2:0] tmp;
 	  
-	flex_counter #(3) row(
+	flex_counter #(3) divide(
 		.clk(clk),
 		.n_rst(n_rst),
 		.s_rst(s_rst),

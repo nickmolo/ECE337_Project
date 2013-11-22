@@ -12,9 +12,8 @@ module addresscounter
 	flex_counter #(20) row(
 		.clk(clk),
 		.n_rst(n_rst),
-		.s_rst(s_rst),
 		.count_enable(pixel_clk && enable),
-		.rollover_val(19'b1001011000000000000),
+		.rollover_val(20'b1001011000000000000),
 		.count_out(countout),
 		.rollover_flag(flag)
 	);
