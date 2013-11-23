@@ -13,6 +13,7 @@ module tb_timertop();
 	reg tb_flag_col;
 	reg tb_flag_addr;
 	reg tb_pixel_clk;
+	reg tb_flag_pulse;
 	reg [9:0] tb_counter_out_row;
 	reg [9:0] tb_counter_out_col;
 	reg [19:0] tb_counter_out_addr;
@@ -27,6 +28,7 @@ module tb_timertop();
 		.flag_col(tb_flag_col),
 		.flag_addr(tb_flag_addr),
 		.pixel_clk(tb_pixel_clk),
+		.flag_pulse(tb_flag_pulse),
 		.counter_out_row(tb_counter_out_row),
 		.counter_out_col(tb_counter_out_col),
 		.counter_out_addr(tb_counter_out_addr)

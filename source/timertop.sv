@@ -7,6 +7,7 @@ module timertop
 			output reg flag_col,
 			output flag_addr,
 			output pixel_clk,
+			output flag_pulse,
 			output [9:0] counter_out_col,
 			output [9:0] counter_out_row,
 			output [19:0] counter_out_addr
@@ -17,7 +18,8 @@ module timertop
 				.clk(clk),
 				.n_rst(n_rst),
 				.enable(enable),
-				.pixel_clk(pixel_clk)
+				.flag_pixel(pixel_clk),
+				.flag_pulse(flag_pulse)
 			);
 		
 		edge_counter #(10) COL
