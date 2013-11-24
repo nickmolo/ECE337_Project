@@ -49,8 +49,6 @@ module timertop
 				.n_rst(n_rst),
 				.enable(addr_enable),
 				.pixel_clk(pixel_clk),
-				.colcnt(counter_out_col),
-				.rowcnt(counter_out_row),
 				.countout(counter_out_addr),
 				.flag(flag_addr)
 			);
