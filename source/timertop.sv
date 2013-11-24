@@ -4,15 +4,16 @@ module timertop
 			input n_rst,
 			input enable,
 			input addr_enable,
-			output reg flag_row,
-			output reg flag_col,
-			output flag_addr,
+	 		output flag_addr,
 			output pixel_clk,
 			output flag_pulse,
-			output [9:0] counter_out_col,
-			output [9:0] counter_out_row,
-			output [19:0] counter_out_addr
+			output reg [9:0] counter_out_col,
+			output reg [9:0] counter_out_row,
+			output reg [19:0] counter_out_addr
 		);
+		
+		reg flag_col;
+		reg flag_row;
 		
 		clockdivider DIVIDE2
 			(
@@ -27,7 +28,7 @@ module timertop
 			(
 				.clk(clk),
 				.n_rst(n_rst),
-				.count_enable(enable),
+				.count_enable(flag_pulse),
 				.rollover_val(10'h31f),
 				.count_out(counter_out_col),
 				.rollover_flag(flag_col)
@@ -37,19 +38,20 @@ module timertop
 			(
 				.clk(clk),
 				.n_rst(n_rst),
-				.count_enable(enable),
+				.count_enable(flag_col&flag_pulse),
 				.rollover_val(10'h20c),
 				.count_out(counter_out_row),
 				.rollover_flag(flag_row)
 			);
 		
-		flex_counter #(20) addr(
-		.clk(clk),
-		.n_rst(n_rst),
-		.count_enable(enable),
-		.rollover_val(20'h4afff),
-		.count_out(countout),
-		.rollover_flag(flag)
-	);
+		flex_counter #(20) addr
+		  (
+		    .clk(clk),
+		    .n_rst(n_rst),
+		    .count_enable(addr_enable),
+		    .rollover_val(20'h4afff),
+		    .count_out(counter_out_addr),
+		    .rollover_flag(flag_addr)
+	     );
 			
 endmodule

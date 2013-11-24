@@ -31,7 +31,7 @@ module flex_counter
 	     if (count_enable == 1'b1) begin
 	       
 	       if(counter == rollval) begin
-	         counter[NUM_CNT_BITS-1:0] <= {{NUM_CNT_BITS-1{1'b0}},1'b1};
+	         counter[NUM_CNT_BITS-1:0] <= {NUM_CNT_BITS{1'b0}};
 	       end else begin
 	         counter <= counter +1;
 	       end
