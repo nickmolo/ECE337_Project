@@ -43,14 +43,13 @@ module timertop
 				.rollover_flag(flag_row)
 			);
 		
-		addresscounter ADDR
-			(
-				.clk(clk),
-				.n_rst(n_rst),
-				.enable(addr_enable),
-				.pixel_clk(pixel_clk),
-				.countout(counter_out_addr),
-				.flag(flag_addr)
-			);
+		flex_counter #(20) addr(
+		.clk(clk),
+		.n_rst(n_rst),
+		.count_enable(enable),
+		.rollover_val(20'h4afff),
+		.count_out(countout),
+		.rollover_flag(flag)
+	);
 			
 endmodule
