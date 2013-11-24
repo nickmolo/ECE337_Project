@@ -9,7 +9,7 @@ module timertop
 			output flag_pulse,
 			output reg [9:0] counter_out_col,
 			output reg [9:0] counter_out_row,
-			output reg [19:0] counter_out_addr
+			output reg [18:0] counter_out_addr
 		);
 		
 		reg flag_col;
@@ -34,22 +34,23 @@ module timertop
 				.rollover_flag(flag_col)
 			);
 			
-		flex_counter #(10) ROW
+			flex_counter #(10) ROW
 			(
 				.clk(clk),
 				.n_rst(n_rst),
-				.count_enable(flag_col&flag_pulse),
+				.count_enable(flag_pulse),
 				.rollover_val(10'h20c),
 				.count_out(counter_out_row),
 				.rollover_flag(flag_row)
 			);
+			
 		
-		flex_counter #(20) addr
+		flex_counter #(19) addr
 		  (
 		    .clk(clk),
 		    .n_rst(n_rst),
 		    .count_enable(addr_enable),
-		    .rollover_val(20'h4afff),
+		    .rollover_val(19'h4afff),
 		    .count_out(counter_out_addr),
 		    .rollover_flag(flag_addr)
 	     );

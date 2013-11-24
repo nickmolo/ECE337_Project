@@ -50,6 +50,10 @@ module tb_timertop();
 	  tb_enable = 0;
 	  #10;
 	  tb_enable= 1;
+	  #23000000;
+	  tb_n_rst = 0;
+	  #400;
+	  tb_n_rst = 1;
 	  
     
 	end 
