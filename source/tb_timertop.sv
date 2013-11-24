@@ -9,6 +9,7 @@ module tb_timertop();
   reg tb_clk;
   reg tb_n_rst;
 	reg tb_enable;
+	reg tb_addr_enable;
 	reg tb_flag_row;
 	reg tb_flag_col;
 	reg tb_flag_addr;
@@ -24,6 +25,7 @@ module tb_timertop();
 		.clk(tb_clk),
 		.n_rst(tb_n_rst),
 		.enable(tb_enable),
+		.addr_enable(tb_addr_enable),
 		.flag_row(tb_flag_row),
 		.flag_col(tb_flag_col),
 		.flag_addr(tb_flag_addr),
@@ -46,12 +48,14 @@ module tb_timertop();
 	begin 
 		tb_n_rst = 0;
 		tb_enable = 0;
+		tb_addr_enable =0;
 	  #1;
 	  tb_n_rst = 1;
 	  tb_enable = 0;
+	  tb_addr_enable =0;
 	  #10;
 	  tb_enable= 1;
-	  
+	  tb_addr_enable =1;
 	  
     
 	end 

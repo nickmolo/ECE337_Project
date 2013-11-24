@@ -12,22 +12,23 @@ module addresscounter
 	
 reg enable2;
 
-always @(colcnt, rowcnt) begin
-	if (colcnt < 160 || rowcnt < 45) begin
-		enable2 <=0;
-	end else begin
-		enable2 <= 1;
+always @(colcnt, rowcnt, enable) begin
+  if(enable) begin
+	 if (colcnt < 160 || rowcnt < 45) begin
+		  enable2 <=0;
+	 end else begin
+		  enable2 <= 1;
+	 end
 	end
 end
 
 	
 	
 	  
-	edge_counter #(20) addr(
+	flex_counter #(20) addr(
 		.clk(clk),
 		.n_rst(n_rst),
 		.count_enable(enable2),
-		.in_edge(pixel_clk),
 		.rollover_val(20'h4afff),
 		.count_out(countout),
 		.rollover_flag(flag)
