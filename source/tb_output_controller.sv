@@ -21,7 +21,7 @@ reg [1:0] tb_out_sel;
 reg tb_vsync;
 reg tb_hsync;
 reg tb_addrFlag;
-reg [19:0] tb_addrcount;
+reg [18:0] tb_addrcount;
 
 
 timertop TIMER(

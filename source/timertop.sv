@@ -38,7 +38,7 @@ module timertop
 			(
 				.clk(clk),
 				.n_rst(n_rst),
-				.count_enable(flag_pulse),
+				.count_enable(flag_pulse&flag_col),
 				.rollover_val(10'h20c),
 				.count_out(counter_out_row),
 				.rollover_flag(flag_row)
