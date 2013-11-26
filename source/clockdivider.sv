@@ -23,8 +23,8 @@ module clockdivider
                         
                         if(enable == 1) begin
                                 
-                                if (cnt == 5) begin
-                                        cnt <= 2;
+                                if (cnt == 4) begin
+                                        cnt <= 1;
                                         flag_pixel <= ~flag_pixel;
                                 end else begin
                                         cnt <= cnt +1;
