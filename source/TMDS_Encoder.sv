@@ -55,8 +55,8 @@ stageOne LOGIC1
 	(
 		.st1_in(L1_input),
 		.st1_out(S1_input)
-	);	
-	
+	);
+
 //Stores 9-bit value from stage 1
 buffer #(9) S1BUFF
 	(
@@ -112,7 +112,7 @@ hs_sr SR0
 //SR1, shifts while SR0 is loading
 hs_sr SR1
 	(
-                .clk(clk),
+                .clk(sr_clk),
                 .n_rst(n_rst),
                 .load_enable(SR1_load),
                 .parallel_in(SR_input),
