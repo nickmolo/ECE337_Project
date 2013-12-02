@@ -25,9 +25,11 @@ module flex_counter
 	  always @ (posedge clk, negedge n_rst) begin 
 	   if (n_rst ==0) begin
 	     counter[NUM_CNT_BITS-1:0] <= {NUM_CNT_BITS{1'b0}}; //reset flip-flops to initial values
-	     rollval <= rollover_val;
+	     rollval <= 0;
 	   end else begin
-	     
+	
+  	     rollval <= rollover_val;     
+		
 	     if (count_enable == 1'b1) begin
 	       
 	       if(counter == rollval) begin
