@@ -115,6 +115,7 @@ module tb_TMDS_Encoder();
 	  #10;
 	  
 	  count = count +1;
+	  tb_D1_load = 1'b0;
 	  tb_D2_load = 1'b1;
 	  tb_S1_load = 1'b1;
 	  tb_S2_load = 1'b1;
@@ -127,40 +128,41 @@ module tb_TMDS_Encoder();
 	  tb_S2_load = 1'b0;
 	  tb_L2_load = 1'b0;
 	  #10;
-	  
+	  tb_D1_load = 1'b0;
 	  tb_SR0_load = 1'b1;
 	  
-	  #10;
+	  //#10;
 	  
 	  tb_SR0_load = 1'b0;
 	  
 	  tb_pixel_copy = tb_pixel_encoded;
+	  //#10;
 	  
 	  if(tb_pixel_copy[9] == 1'b1) begin
-	    tb_pixel_copy[7:0] <= ~tb_pixel_copy[7:0];
+	    tb_pixel_copy[7:0] = ~tb_pixel_copy[7:0];
 	  end
 	  
 	  if(tb_pixel_encoded[8] == 1'b1) begin
-	    decoded_pixel[0] <= tb_pixel_copy[0];
-      decoded_pixel[1] <= tb_pixel_copy[1] ^ tb_pixel_copy[0];
-      decoded_pixel[2] <= tb_pixel_copy[2] ^ tb_pixel_copy[1];
-      decoded_pixel[3] <= tb_pixel_copy[3] ^ tb_pixel_copy[2];
-      decoded_pixel[4] <= tb_pixel_copy[4] ^ tb_pixel_copy[3];
-      decoded_pixel[5] <= tb_pixel_copy[5] ^ tb_pixel_copy[4];
-      decoded_pixel[6] <= tb_pixel_copy[6] ^ tb_pixel_copy[5];
-      decoded_pixel[7] <= tb_pixel_copy[7] ^ tb_pixel_copy[6];
+	    decoded_pixel[0] = tb_pixel_copy[0];
+      decoded_pixel[1] = tb_pixel_copy[1] ^ tb_pixel_copy[0];
+      decoded_pixel[2] = tb_pixel_copy[2] ^ tb_pixel_copy[1];
+      decoded_pixel[3] = tb_pixel_copy[3] ^ tb_pixel_copy[2];
+      decoded_pixel[4] = tb_pixel_copy[4] ^ tb_pixel_copy[3];
+      decoded_pixel[5] = tb_pixel_copy[5] ^ tb_pixel_copy[4];
+      decoded_pixel[6] = tb_pixel_copy[6] ^ tb_pixel_copy[5];
+      decoded_pixel[7] = tb_pixel_copy[7] ^ tb_pixel_copy[6];
 	  end else begin
-	    decoded_pixel[0] <= tb_pixel_copy[0];
-      decoded_pixel[1] <= tb_pixel_copy[1] ~^ tb_pixel_copy[0];
-      decoded_pixel[2] <= tb_pixel_copy[2] ~^ tb_pixel_copy[1];
-      decoded_pixel[3] <= tb_pixel_copy[3] ~^ tb_pixel_copy[2];
-      decoded_pixel[4] <= tb_pixel_copy[4] ~^ tb_pixel_copy[3];
-      decoded_pixel[5] <= tb_pixel_copy[5] ~^ tb_pixel_copy[4];
-      decoded_pixel[6] <= tb_pixel_copy[6] ~^ tb_pixel_copy[5];
-      decoded_pixel[7] <= tb_pixel_copy[7] ~^ tb_pixel_copy[6];
+	    decoded_pixel[0] = tb_pixel_copy[0];
+      decoded_pixel[1] = tb_pixel_copy[1] ~^ tb_pixel_copy[0];
+      decoded_pixel[2] = tb_pixel_copy[2] ~^ tb_pixel_copy[1];
+      decoded_pixel[3] = tb_pixel_copy[3] ~^ tb_pixel_copy[2];
+      decoded_pixel[4] = tb_pixel_copy[4] ~^ tb_pixel_copy[3];
+      decoded_pixel[5] = tb_pixel_copy[5] ~^ tb_pixel_copy[4];
+      decoded_pixel[6] = tb_pixel_copy[6] ~^ tb_pixel_copy[5];
+      decoded_pixel[7] = tb_pixel_copy[7] ~^ tb_pixel_copy[6];
     end
-	  
-	  #10;
+	   
+	  //#10;
 	  pixel_data2 = i -2;
 	  
 	  assert( decoded_pixel == pixel_data2) begin
@@ -170,7 +172,7 @@ module tb_TMDS_Encoder();
 	    fail = 1'b1;
 	  end
 	  
-	  #10;
+	  //#10;
 	  
 	  end
 	end

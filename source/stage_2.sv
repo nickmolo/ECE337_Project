@@ -11,11 +11,11 @@ module stage_2
 
   );
     
-  reg [15:0]disparity_cnt;
-  reg [15:0]nxt_disparity_cnt;
-  reg [15:0]current_cnt;
-  reg [2:0]num_1;
-  reg [2:0]num_0;
+  reg signed [15:0]disparity_cnt;
+  reg signed [15:0]nxt_disparity_cnt;
+  reg signed [15:0]current_cnt;
+  reg [3:0]num_1;
+  reg [3:0]num_0;
   
   //disparity counter reg behaviour
   always @ (posedge clk, negedge n_rst) begin: state_reg
@@ -34,7 +34,7 @@ module stage_2
   
   
   //Combinational next state logic
-  always @ (disparity_cnt, current_cnt, load) begin: nxt_state_logic 
+  always @ (s_rst, disparity_cnt, current_cnt, load) begin: nxt_state_logic 
     
     if(s_rst == 1) begin
       nxt_disparity_cnt = 0;
@@ -82,7 +82,7 @@ module stage_2
       data_out[8] = data_in[8];
       data_out[7:0] = ~data_in[7:0];
       
-      current_cnt = disparity_cnt + ((2'd2) * data_in[8]) + num_0 - num_1;
+      current_cnt = disparity_cnt + (2 * data_in[8]) + num_0 - num_1;
       
     end
       
@@ -92,13 +92,13 @@ module stage_2
       data_out[8] = data_in[8];
       data_out[7:0] = data_in[7:0];
       
-      current_cnt = disparity_cnt + ((2'd2) * !data_in[8]) + num_1 - num_0;
+      current_cnt = disparity_cnt + (2 * ~data_in[8]) + num_1 - num_0;
       
     end  
   
   end
         
   assign num_1 = data_in[0] + data_in[1] + data_in[2] + data_in[3] + data_in[4] + data_in[5] + data_in[6] + data_in[7];
-  assign num_0 = 3'd8 - num_1;      
+  assign num_0 = 4'h8 - num_1;      
   
 endmodule

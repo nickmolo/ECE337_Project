@@ -29,7 +29,7 @@ module timertop
 		    .clk(sr_clk),
 		    .n_rst(n_rst),
 		    .enable(enable),
-		    .pixel_clk(pixel_clk)
+		    .flag_pixel(pixel_clk)
 		  );
 		
 
