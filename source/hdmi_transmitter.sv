@@ -1,7 +1,7 @@
 module hdmi_transmitter
 
   (
-    input wire system_clk,
+    input wire clk,
     input wire sr_clk,
     input wire n_rst,
     input wire data_ready,
@@ -106,7 +106,7 @@ module hdmi_transmitter
 
   TMDS_channel_0
   (
-        .clk(system_clk),
+        .clk(clk),
         .sr_clk(sr_clk),
         .n_rst(n_rst),
         .s_rst(TMDS_Controller_to_TMDS_srst),
@@ -129,7 +129,7 @@ module hdmi_transmitter
 
   TMDS_channel_1
   (
-        .clk(system_clk),
+        .clk(clk),
         .n_rst(n_rst),
         .sr_clk(sr_clk),
         .s_rst(TMDS_Controller_to_TMDS_srst),
@@ -152,7 +152,7 @@ module hdmi_transmitter
 
   TMDS_channel_2
   (
-        .clk(system_clk),
+        .clk(clk),
         .sr_clk(sr_clk),
         .n_rst(n_rst),
         .s_rst(TMDS_Controller_to_TMDS_srst),
@@ -176,7 +176,7 @@ module hdmi_transmitter
 
   Output_Controller
   (
-        .clk(system_clk),
+        .clk(clk),
         .n_rst(n_rst),
         .rowcount(Timers_to_Controllers_rowcount),
         .colcount(Timers_to_Controllers_colcount),
@@ -195,7 +195,7 @@ module hdmi_transmitter
 
   TMDS_Controller
   (
-        .clk(system_clk),
+        .clk(clk),
         .n_rst(n_rst),
         .addRollover(Timers_to_TMDS_Controller_addrrollover),
         .rowcount(Timers_to_Controllers_rowcount),
@@ -218,7 +218,7 @@ module hdmi_transmitter
 
   Timertop
   (
-        .clk(system_clk),
+        .clk(clk),
         .sr_clk(sr_clk),
         .n_rst(n_rst),
         .enable(1'b1),
@@ -235,7 +235,7 @@ module hdmi_transmitter
 
   Addr_Bit
   (
-        .clk(system_clk),
+        .clk(clk),
         .n_rst(n_rst),
         .frameswap(TMDS_Controller_to_bitflip_frameswap),
         .addr_bit(address_line[19])

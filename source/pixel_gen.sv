@@ -6,7 +6,7 @@ module pixel_gen
     output reg flag_pixel
   );
   
-  reg [2:0] cnt;
+  reg [3:0] cnt;
   
   always @ (posedge clk, negedge n_rst) begin
     if( n_rst == 1'b0) begin
@@ -17,7 +17,7 @@ module pixel_gen
       
       if(enable == 1) begin
         
-        if (cnt == 4) begin
+        if (cnt == 5) begin
           cnt <= 1;
           flag_pixel <= ~flag_pixel;
         end else begin

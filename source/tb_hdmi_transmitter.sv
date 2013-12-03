@@ -17,17 +17,26 @@ module tb_hdmi_transmitter();
 	wire [19:0]tb_address_line;
 	wire tb_TMDS_0p;
 	wire tb_TMDS_0n;
+	wire [9:0]tb_TMDS_0;
 	wire tb_TMDS_1p;
 	wire tb_TMDS_1n;
+	wire [9:0]tb_TMDS_1;
 	wire tb_TMDS_2p;
 	wire tb_TMDS_2n;
+	wire [9:0]tb_TMDS_2;
 	wire tb_pixelclk;
+	
 	
 	//inputs
 	reg tb_data_ready;
 	reg tb_frame_done;
 	reg [23:0]tb_data_line;
 	
+	reg [7:0] decoded_pixel;
+	reg [9:0] tb_pixel_copy;
+
+	integer max;
+	integer i;
 	
 	always
 	begin : CLK_GEN
@@ -64,6 +73,55 @@ module tb_hdmi_transmitter();
     .TMDS_2n(tb_TMDS_2n),
     .pixelclk(tb_pixelclk)
 	);
+
+stp_sr
+	
+#(
+.NUM_BITS(10),
+.SHIFT_MSB(1)
+)
+  
+  stp_sr_DUT_0
+(
+  .clk(tb_sr_clk),
+  .n_rst(tb_n_rst),
+  .shift_enable(1'b1),
+  .serial_in(tb_TMDS_0p),
+  .parallel_out(tb_TMDS_0)
+);
+
+stp_sr
+	
+#(
+.NUM_BITS(10),
+.SHIFT_MSB(1)
+)
+  
+  stp_sr_DUT_1
+(
+  .clk(tb_sr_clk),
+  .n_rst(tb_n_rst),
+  .shift_enable(1'b1),
+  .serial_in(tb_TMDS_1p),
+  .parallel_out(tb_TMDS_1)
+);
+
+
+stp_sr
+	
+#(
+.NUM_BITS(10),
+.SHIFT_MSB(1)
+)
+  
+  stp_sr_DUT_2
+(
+  .clk(tb_sr_clk),
+  .n_rst(tb_n_rst),
+  .shift_enable(1'b1),
+  .serial_in(tb_TMDS_2p),
+  .parallel_out(tb_TMDS_2)
+);
 	
 	
 	initial begin : tb_proc
@@ -84,23 +142,61 @@ module tb_hdmi_transmitter();
 		@(posedge tb_sys_clk);
 		@(posedge tb_sys_clk);	
 	
-    while(1) begin
+    max = 255;
+	  for(i = 1; i < max; i=i) begin
+	   
+	     if(i == 254) begin
+	       i=0;
+	     end
+	  
 	  
       if(tb_read_request == 1'b1) begin
-	     
+	
+	tb_pixel_copy = tb_TMDS_0;
         @(posedge tb_sys_clk);
 	     
-        tb_data_ready = 1;
+	       tb_data_line = i;
+	       i=i+1;
+        	tb_data_ready = 1;
+
+	@(posedge tb_sys_clk);
+	tb_pixel_copy = tb_TMDS_0;
+	
+	if(tb_pixel_copy[9] == 1'b1) begin
+		tb_pixel_copy[7:0] = ~tb_pixel_copy[7:0];
+	end
+	
+	if(tb_pixel_copy[8] == 1'b1) begin
+		decoded_pixel[0] = tb_pixel_copy[0];
+		decoded_pixel[1] = tb_pixel_copy[1] ^ tb_pixel_copy[0];
+		decoded_pixel[2] = tb_pixel_copy[2] ^ tb_pixel_copy[1];
+		decoded_pixel[3] = tb_pixel_copy[3] ^ tb_pixel_copy[2];
+		decoded_pixel[4] = tb_pixel_copy[4] ^ tb_pixel_copy[3];
+		decoded_pixel[5] = tb_pixel_copy[5] ^ tb_pixel_copy[4];
+		decoded_pixel[6] = tb_pixel_copy[6] ^ tb_pixel_copy[5];
+		decoded_pixel[7] = tb_pixel_copy[7] ^ tb_pixel_copy[6];
+	end else begin
+		decoded_pixel[0] = tb_pixel_copy[0];
+		decoded_pixel[1] = tb_pixel_copy[1] ~^ tb_pixel_copy[0];
+		decoded_pixel[2] = tb_pixel_copy[2] ~^ tb_pixel_copy[1];
+		decoded_pixel[3] = tb_pixel_copy[3] ~^ tb_pixel_copy[2];
+		decoded_pixel[4] = tb_pixel_copy[4] ~^ tb_pixel_copy[3];
+		decoded_pixel[5] = tb_pixel_copy[5] ~^ tb_pixel_copy[4];
+		decoded_pixel[6] = tb_pixel_copy[6] ~^ tb_pixel_copy[5];
+		decoded_pixel[7] = tb_pixel_copy[7] ~^ tb_pixel_copy[6];
+	end
 	     
-        @(posedge tb_sys_clk);
+        
         @(posedge tb_sys_clk);
 	     
       end
     
       tb_data_ready = 0;
-      tb_data_line = tb_data_line + 1;
+      
       
       @(posedge tb_sys_clk);
+
+
 	
     end
   end
