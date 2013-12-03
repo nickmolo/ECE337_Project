@@ -16,8 +16,7 @@ module TMDS_Encoder
 	input reg [9:0] guard_data,
 	input wire [1:0] out_sel,
 	input wire shiftmuxsel,
-	output wire TMDS_out,
-	output reg [9:0] pixel_encoded
+	output wire TMDS_out
 );
 
 //Internal Transitional Registers
@@ -26,8 +25,10 @@ reg [7:0] L1_input;	//L1 input from D2
 reg [8:0] S1_input;	//S1 input from L1
 reg [8:0] L2_input;	//L2 input from S1
 reg [9:0] S2_input;	//S2 input from L2
-//reg [9:0] pixel_encoded;	//Final encoded pixel data
+reg [9:0] pixel_encoded;	//Final encoded pixel data
 reg [9:0] SR_input;
+reg SR0_out;
+reg SR1_out;
 
 
 //Updated with valid video or blanking data
