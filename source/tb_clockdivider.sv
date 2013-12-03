@@ -8,7 +8,6 @@ module tb_clockdivider();
   
   reg tb_clk;
   reg tb_n_rst;
-	reg tb_s_rst;
 	reg tb_enable;
 	reg tb_flag;
 
@@ -16,9 +15,8 @@ module tb_clockdivider();
 	(
 		.clk(tb_clk),
 		.n_rst(tb_n_rst),
-		.s_rst(tb_s_rst),
 		.enable(tb_enable),
-		.flag(tb_flag)
+		.flag_pulse(tb_flag)
 	);
 	
 	always
@@ -32,11 +30,9 @@ module tb_clockdivider();
 	initial
 	begin 
 		tb_n_rst = 0;
-	  tb_s_rst = 1;
 	  tb_enable = 0;
 	  #1;
 	  tb_n_rst = 1;
-	  tb_s_rst = 1;
 	  tb_enable = 0;
 	  #10;
 	  tb_enable= 1;
