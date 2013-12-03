@@ -6,7 +6,7 @@
 // Version:     1.0  Initial Design Entry
 // Description: flexible design for serial to parallel shift register
 
-module stp_sr
+module tb_stp_sr
  
 #( 
 
