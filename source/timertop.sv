@@ -1,6 +1,7 @@
 module timertop
 		(
 			input clk,
+			input sr_clk,
 			input n_rst,
 			input enable,
 			input addr_enable,
@@ -20,9 +21,17 @@ module timertop
 				.clk(clk),
 				.n_rst(n_rst),
 				.enable(enable),
-				.flag_pixel(pixel_clk),
 				.flag_pulse(flag_pulse)
 			);
+		
+		pixel_gen PIXEL_GEN
+		  (
+		    .clk(sr_clk),
+		    .n_rst(n_rst),
+		    .enable(enable),
+		    .pixel_clk(pixel_clk)
+		  );
+		
 
 		flex_counter #(10) COL
 			(

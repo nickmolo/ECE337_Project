@@ -219,6 +219,7 @@ module hdmi_transmitter
   Timertop
   (
         .clk(system_clk),
+        .sr_clk(sr_clk),
         .n_rst(n_rst),
         .enable(1'b1),
         .addr_enable(TMDS_Controller_to_Timers_addrenable),
