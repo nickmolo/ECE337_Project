@@ -1,4 +1,4 @@
-module clockdivider
+module pixel_gen
   (
     input wire clk,
     input wire n_rst,
