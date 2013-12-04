@@ -78,7 +78,7 @@ tb_stp_sr
 	
 #(
 .NUM_BITS(10),
-.SHIFT_MSB(1)
+.SHIFT_MSB(0)
 )
   
   stp_sr_DUT_0
@@ -94,7 +94,7 @@ tb_stp_sr
 	
 #(
 .NUM_BITS(10),
-.SHIFT_MSB(1)
+.SHIFT_MSB(0)
 )
   
   stp_sr_DUT_1
@@ -111,7 +111,7 @@ tb_stp_sr
 	
 #(
 .NUM_BITS(10),
-.SHIFT_MSB(1)
+.SHIFT_MSB(0)
 )
   
   stp_sr_DUT_2
@@ -145,22 +145,26 @@ tb_stp_sr
     max = 255;
 	  for(i = 1; i < max; i=i) begin
 	   
-	     if(i == 254) begin
+	     if(i == 254) begin 
 	       i=0;
 	     end
 	     
 	     if(tb_read_request == 1'b1) begin
+	       
+	    	     
+	    	   //basically the tb_read_requests come in too late to be used as an indicator to pull the correct value
+	    	   //by delaying it a clock cycle I can fetch it on the by the next pixel clk
+	    	     
+	    	  @(posedge tb_sys_clk);
+	    	  @(posedge tb_sys_clk);
+	    	  @(posedge tb_sys_clk);
+	    	  @(posedge tb_sys_clk);
+	    	  @(posedge tb_sys_clk);
+	    	  @(posedge tb_sys_clk);
+	    	  @(posedge tb_sys_clk);
+	    	  
+	    	  
 	       tb_pixel_copy = tb_TMDS_0;
-	   
-	       tb_data_line = i;
-	       i=i+1;
-	       tb_data_ready = 1;
-	       
-	       
-	     
-	     end
-	     
-	     tb_pixel_copy = tb_TMDS_0;
 	       
 	       if(tb_pixel_copy[9] == 1'b1) begin
 	         tb_pixel_copy[7:0] = ~tb_pixel_copy[7:0];
@@ -185,8 +189,14 @@ tb_stp_sr
 	         decoded_pixel[6] = tb_pixel_copy[6] ~^ tb_pixel_copy[5];
 	         decoded_pixel[7] = tb_pixel_copy[7] ~^ tb_pixel_copy[6];
 	       end
+	       
+	       tb_data_line = i;
+	       tb_data_ready = 1;
+	       i=i+1;
   
-	     
+     end
+	      
+        
 	     
 	     tb_data_ready = 0;
 	     

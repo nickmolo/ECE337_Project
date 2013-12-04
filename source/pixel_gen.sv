@@ -17,8 +17,8 @@ module pixel_gen
       
       if(enable == 1) begin
         
-        if (cnt == 5) begin
-          cnt <= 1;
+        if (cnt == 6) begin
+          cnt <= 2;
           flag_pixel <= ~flag_pixel;
         end else begin
           cnt <= cnt +1;

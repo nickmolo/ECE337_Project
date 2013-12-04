@@ -4,9 +4,13 @@ module tb_timertop();
   
   // Define parameters
 	parameter CLK_PERIOD				= 6.66;
-
+	parameter SR_CLK_PERIOD				= 4;
+  parameter PIXEL_PERIOD = 40;
+  
   
   reg tb_clk;
+  reg tb_pixel_test;
+  reg tb_sr_clk;
   reg tb_n_rst;
 	reg tb_enable;
 	reg tb_addr_enable;
@@ -20,6 +24,7 @@ module tb_timertop();
   	timertop DUT
 	(
 		.clk(tb_clk),
+		.sr_clk(tb_sr_clk),
 		.n_rst(tb_n_rst),
 		.enable(tb_enable),
 		.addr_enable(tb_flag_pulse),
@@ -39,6 +44,23 @@ module tb_timertop();
 		#(CLK_PERIOD / 2);
 		tb_clk = 1'b1;
 		#(CLK_PERIOD / 2);
+	end
+	
+	
+	always
+	begin : SR_CLK_GEN
+		tb_sr_clk = 1'b0;
+		#(SR_CLK_PERIOD / 2);
+		tb_sr_clk = 1'b1;
+		#(SR_CLK_PERIOD / 2);
+	end
+	
+	always
+	begin : PIXEL_CLK_GEN
+		tb_pixel_test = 1'b0;
+		#(PIXEL_PERIOD / 2);
+		tb_pixel_test = 1'b1;
+		#(PIXEL_PERIOD / 2);
 	end
 	
 	initial
