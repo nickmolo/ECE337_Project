@@ -1,0 +1,46 @@
+
+1. Executive Summary ____/ 5
+	Answers questions specified in guidelines
+2. Design Specifications
+	2.1 Interfacing Specifications ____/ 6
+		(/3)Description of external devices
+		(/3)Block diagram showing external devices
+	2.2 Operational Characteristics ____/15
+		(/10) Functions to accomplish, how inputs control outputs. Made appropriate use of tables and diagrams of types listed in report guidelines.
+		(/5) Complete/correct I/O port table
+	2.3 Requirements ____/10
+		(/5) How does intended application affect special requirements & optimization objectives?
+		(/5) Describes optimization objective & approach to achieving it
+3. Final Design
+	3.1 Design Architecture ____/ 5
+	3.2 Functional Block Diagram ____/15
+		(/8) Completeness of Diagrams
+		(/7) Description of blocks
+	3.3 Standards and Protocols ____/ 4
+		(/1) Explanation of design decisions for external devices
+		(/3) Explanation of design decisions for standards and protocols chosen
+	3.4 Timing & Area Budgets ____/20
+		(/10) Timing Budget and Actual Results, observations
+		(/8) Area Budget and Actual Results, observations
+		(/2) I/O pad frame analysis
+4. Testing ____/20
+	(/10) Completeness of chip level testing (as described here and presented in appendix B)
+	(/10) Description of block level testing
+5. Layout ____/ 5
+	Complete layout with no obvious errors and summary of layout results
+6. Results ____/10
+	(/5) listing of fixed and approved design specific success criteria
+	(/5) accurate statement of status with respect to each criterion in comparison to demonstration and test results in appendix B.
+7. Appendices ____/35
+	Please refer to report guidelines for manner in which information is to be provided - some things such as source code are to be left in electronic form. Some other items should include only relevant excerpts, not the entire document (such as datasheets)
+	(/2) Table of contents for appendix A
+	(/5) VHDL Code in electronic form, adequate commenting of code
+	(/5) Test Benches in electronic form with adequate commenting
+	(/3) Report files in electronic form generated during synthesis and layout of entire design
+	(/3) Data sheets in electronic form
+	(/2) Table of contents for appendix B
+	(/10) Simulation results demonstrating correct operation
+	(/5) Adequate annotation of simulation results and short descriptions
+Format ____/-10
+	Spelling/grammar errors, sloppiness, failure to follow specified format will result in loss of points in this category. Failure to correct deficiencies in format or writing style (as indicated in proposal comments) will be penalized here. Max penalty 10 points.
+
