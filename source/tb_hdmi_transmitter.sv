@@ -1,6 +1,3 @@
-//Filename: tb_hdmi_transmitter.sv
-//Description: Full top level test bench
-
 `timescale 1ns / 10ps
 
 module tb_hdmi_transmitter();
@@ -166,6 +163,7 @@ tb_stp_sr
 	    	  @(posedge tb_sys_clk);
 	    	  @(posedge tb_sys_clk);
 	    	  @(posedge tb_sys_clk);
+		  @(posedge tb_sr_clk);
 	    	  
 	    	  
 	       tb_pixel_copy = tb_TMDS_0;

@@ -27,17 +27,17 @@
 	(/10) Completeness of chip level testing (as described here and presented in appendix B)
 	(/10) Description of block level testing
 5. Layout ____/ 5
-	Complete layout with no obvious errors and summary of layout results
+	Complete layout with no obvious errors and summary of layout results - done
 6. Results ____/10
-	(/5) listing of fixed and approved design specific success criteria
-	(/5) accurate statement of status with respect to each criterion in comparison to demonstration and test results in appendix B.
+	(/5) listing of fixed and approved design specific success criteria - done 
+	(/5) accurate statement of status with respect to each criterion in comparison to demonstration and test results in appendix B. - done
 7. Appendices ____/35
 	Please refer to report guidelines for manner in which information is to be provided - some things such as source code are to be left in electronic form. Some other items should include only relevant excerpts, not the entire document (such as datasheets)
-	(/2) Table of contents for appendix A
-	(/5) VHDL Code in electronic form, adequate commenting of code
-	(/5) Test Benches in electronic form with adequate commenting
-	(/3) Report files in electronic form generated during synthesis and layout of entire design
-	(/3) Data sheets in electronic form
+	(/2) Table of contents for appendix A - done
+	(/5) VHDL Code in electronic form, adequate commenting of code - done
+	(/5) Test Benches in electronic form with adequate commenting - done
+	(/3) Report files in electronic form generated during synthesis and layout of entire design - done
+	(/3) Data sheets in electronic form - done
 	(/2) Table of contents for appendix B
 	(/10) Simulation results demonstrating correct operation
 	(/5) Adequate annotation of simulation results and short descriptions
