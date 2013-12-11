@@ -1,3 +1,6 @@
+//Filename: clockdivider.sv
+//Description: Designed to create pulse for use by the controllers.
+
 module clockdivider
   (
     input wire clk,

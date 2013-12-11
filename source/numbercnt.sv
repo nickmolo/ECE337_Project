@@ -1,3 +1,6 @@
+//filename: numbercnt.sv
+//Description: Designed to count the number of ones and zeros in an input buffer.
+
 module numbercnt(
 input wire [7:0] data_in,
 output reg [3:0] num0,

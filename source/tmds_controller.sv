@@ -1,3 +1,6 @@
+//Filename: tmds_controller.sv
+//Description: This controls movement of pixel data through the TMDS Encoder
+
 module tmds_controller
     
   (

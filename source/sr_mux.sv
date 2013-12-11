@@ -1,3 +1,6 @@
+//Filename: sr_mux.sv
+//Description: A simple 2:1 mux
+
 module sr_mux
 	(
 	input wire select,

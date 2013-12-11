@@ -1,3 +1,6 @@
+//Filename: tb_TMDS_Encoder.sv
+//Description: Test bench for the TMDS Encoder
+
 `timescale 1ns / 10ps
 
 module tb_TMDS_Encoder();

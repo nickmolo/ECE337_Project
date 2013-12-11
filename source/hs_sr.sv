@@ -1,3 +1,6 @@
+//Filename: hs_sr.sv
+//Description: A 10 bit wide high-speed shift register
+
 module hs_sr
 	(
 	input wire clk,

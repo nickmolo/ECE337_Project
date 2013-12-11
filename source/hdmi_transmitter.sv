@@ -1,3 +1,6 @@
+//Filename: hdmi_transmitter.sv
+//Description: This is the top level for the project.
+
 module hdmi_transmitter
 
   (

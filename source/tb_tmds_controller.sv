@@ -1,3 +1,6 @@
+//Filename: tb_tmds_controller.sv
+//Description: Test bench used to test the TMDS Controller
+
 `timescale 1ns / 10ps
 
 module tb_tmds_controller();

@@ -1,3 +1,6 @@
+//Filename: comparator.sv
+//Description: Designed to check if the input data is greater than 5
+
 module comparator(
 input wire clk,
 input wire nrst,

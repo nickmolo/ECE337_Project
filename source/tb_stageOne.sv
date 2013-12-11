@@ -1,3 +1,6 @@
+//Filename: tb_stageOne.sv
+//Description: Used to test the stage one encoding
+
 `timescale 1ns / 1ns
 
 module tb_stageOne ();

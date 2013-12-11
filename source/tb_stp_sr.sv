@@ -1,10 +1,5 @@
-// $Id: $
-// File name:   flex_stp_sr.sv
-// Created:     9/10/2013
-// Author:      Nicholas Plante
-// Lab Section: [6~
-// Version:     1.0  Initial Design Entry
-// Description: flexible design for serial to parallel shift register
+//Filename: flex_stp_sr.sv
+//Description: flexible design for serial to parallel shift register
 
 module tb_stp_sr
  

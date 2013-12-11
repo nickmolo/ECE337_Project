@@ -1,3 +1,6 @@
+//Filename: tb_output_controller.sv
+//Description: Test bench for the output controller
+
 `timescale 1ns / 10ps
 
 module tb_output_controller();

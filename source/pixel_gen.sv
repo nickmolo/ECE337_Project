@@ -1,3 +1,6 @@
+//Filename: pixel_gen.sv
+//Description: designed to generate a 25 MHz pixel clock to be used by the externam hdmi device
+
 module pixel_gen
   (
     input wire clk,
@@ -17,8 +20,8 @@ module pixel_gen
       
       if(enable == 1) begin
         
-        if (cnt == 6) begin
-          cnt <= 2;
+        if (cnt == 5) begin
+          cnt <= 1;
           flag_pixel <= ~flag_pixel;
         end else begin
           cnt <= cnt +1;

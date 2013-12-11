@@ -1,4 +1,5 @@
-//Stage one outputs a transition minimized 9-bit code based on an 8-bit input
+//Filename: stageOne.sv
+//Description: Stage one outputs a transition minimized 9-bit code based on an 8-bit input
 module stageOne
 (
 	input wire [7:0] st1_in,		//8-bit input from databuffer

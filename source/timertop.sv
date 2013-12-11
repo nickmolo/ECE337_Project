@@ -1,3 +1,6 @@
+//Filename: timertop.sv
+//Description: Top level for the timer block
+
 module timertop
 		(
 			input clk,

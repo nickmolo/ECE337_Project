@@ -1,3 +1,6 @@
+//Filename: output_controller.sv
+//Description: This controller controls wether we are in blanking, guard, or video data mode
+
 module output_controller
 
   (

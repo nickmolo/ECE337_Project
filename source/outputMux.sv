@@ -1,3 +1,6 @@
+//Filename: outputMux.sv
+//Description: used by the output controller to output either video data, blanking data, or guard data. 
+
 module outputMux
     
   (

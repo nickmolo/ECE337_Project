@@ -1,3 +1,6 @@
+//Filename: stage_2.sv
+//Description: Encodes 9 bit pixel data into 10 bit pixel data
+
 module stage_2
     
   (

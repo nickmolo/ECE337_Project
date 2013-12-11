@@ -1,3 +1,6 @@
+//Filename: tb_clockdivider.sv
+//Description: Test bench for the timer block
+
 `timescale 1ns / 10ps
 
 module tb_clockdivider();

@@ -1,3 +1,6 @@
+//Filename: buffer.sv
+//Description: Designed as a flexible use case register buffer
+
 module buffer
 	#(NUMBITS=8
 	)

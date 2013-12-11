@@ -1,3 +1,6 @@
+//Filename: tb_pixel_gen.sv
+//Description: Designed to test the pixel clock generation
+
 `timescale 1ns / 10ps
 
 module tb_pixel_gen();

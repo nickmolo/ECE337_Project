@@ -1,3 +1,6 @@
+//Filename: flex_counter.sv
+//Description: Designed as a flexible width flex counter
+
 
 module flex_counter
       #(

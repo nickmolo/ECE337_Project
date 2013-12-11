@@ -1,3 +1,6 @@
+//Filename: TMDS_Encoder
+//Discription: This is the top level file for the TMDS Encoder Block
+
 module TMDS_Encoder
 (
 	input wire clk,

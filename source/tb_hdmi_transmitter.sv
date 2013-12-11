@@ -1,3 +1,6 @@
+//Filename: tb_hdmi_transmitter.sv
+//Description: Full top level test bench
+
 `timescale 1ns / 10ps
 
 module tb_hdmi_transmitter();
@@ -48,10 +51,11 @@ module tb_hdmi_transmitter();
 
 	always
 	begin : CLK_GEN_2
+		#(SR_CLK_PERIOD / 4);
 		tb_sr_clk = 1'b0;
 		#(SR_CLK_PERIOD / 2);
 		tb_sr_clk = 1'b1;
-		#(SR_CLK_PERIOD / 2);
+		#(SR_CLK_PERIOD / 4);
 	end
 	
 	

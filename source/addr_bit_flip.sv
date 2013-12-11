@@ -1,3 +1,6 @@
+//Filename: addr_bit_flip.sv
+//Description: Chooses between frames in SRAM
+
 module addr_bit_flip
     (
     input wire clk,

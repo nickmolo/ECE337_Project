@@ -21,8 +21,6 @@ module tb_timertop();
 	reg [9:0] tb_counter_out_col;
 	reg [19:0] tb_counter_out_addr;
 
-  integer count;
-
   	timertop DUT
 	(
 		.clk(tb_clk),
@@ -72,42 +70,14 @@ module tb_timertop();
 	  #1;
 	  tb_n_rst = 1;
 	  tb_enable = 0;
-	  count =0;
 	  #10;
 	  tb_enable= 1;
-	  if(tb_counter_out_col == 0) begin
-	    $display("Column rolls over");
-	  end
-	  if(tb_counter_out_row == 0) begin
-	    $display("Row rolls over");
-	  end
+	  #23000000;
+	  tb_n_rst = 0;
+	  #400;
+	  tb_n_rst = 1;
 	  
-	  @(posedge tb_pixel_test);
-	  @(posedge tb_sr_clk);
-	  count = count +1;
-	  @(posedge tb_sr_clk);
-	  count = count +1;
-	  @(posedge tb_sr_clk);
-	  count = count +1;
-	  @(posedge tb_sr_clk);
-	  count = count +1;
-	  @(posedge tb_sr_clk);
-	  count = count +1;
-	  @(posedge tb_sr_clk);
-	  count = count +1;
-	  @(posedge tb_sr_clk);
-	  count = count +1;
-	  @(posedge tb_sr_clk);
-	  count = count +1;
-	  @(posedge tb_sr_clk);
-	  count = count +1;
-	  @(posedge tb_sr_clk);
-	  count = count +1;
-	  @(negedge tb_pixel_test);
-	  if(count == 10) begin
-	    $display("Pixel divison occurs properly");
-	  end
-	  
-  end 
+    
+	end 
 	
 endmodule
