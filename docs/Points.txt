@@ -1,21 +1,21 @@
-
 1. Executive Summary ____/ 5
-	Answers questions specified in guidelines
+	Answers questions specified in guidelines - done
 2. Design Specifications
 	2.1 Interfacing Specifications ____/ 6
-		(/3)Description of external devices
-		(/3)Block diagram showing external devices
+		(/3)Description of external devices - done 
+		(/3)Block diagram showing external devices - done
 	2.2 Operational Characteristics ____/15
-		(/10) Functions to accomplish, how inputs control outputs. Made appropriate use of tables and diagrams of types listed in report guidelines.
-		(/5) Complete/correct I/O port table
+		(/10) Functions to accomplish, how inputs control outputs. Made appropriate use of tables and diagrams of types listed in report guidelines. - done
+		(/5) Complete/correct I/O port table - done
 	2.3 Requirements ____/10
-		(/5) How does intended application affect special requirements & optimization objectives?
-		(/5) Describes optimization objective & approach to achieving it
+		(/5) How does intended application affect special requirements & optimization objectives? - done
+		(/5) Describes optimization objective & approach to achieving it -
+		done
 3. Final Design
-	3.1 Design Architecture ____/ 5
-	3.2 Functional Block Diagram ____/15
-		(/8) Completeness of Diagrams
-		(/7) Description of blocks
+	3.1 Design Architecture ____/ 5 - done
+	3.2 Functional Block Diagram ____/15 
+		(/8) Completeness of Diagrams - done 
+		(/7) Description of blocks - done
 	3.3 Standards and Protocols ____/ 4
 		(/1) Explanation of design decisions for external devices
 		(/3) Explanation of design decisions for standards and protocols chosen
@@ -43,4 +43,3 @@
 	(/5) Adequate annotation of simulation results and short descriptions
 Format ____/-10
 	Spelling/grammar errors, sloppiness, failure to follow specified format will result in loss of points in this category. Failure to correct deficiencies in format or writing style (as indicated in proposal comments) will be penalized here. Max penalty 10 points.
-
